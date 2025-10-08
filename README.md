@@ -21,7 +21,7 @@ This project is part of my learning journey to understand and practice **React R
 - **React Router DOM**
 - **Vite**
 - **JavaScript (ES6+)**
-- **CSS / Tailwind CSS** *(optional)*
+- **CSS / Tailwind CSS** 
 
 ---
 
