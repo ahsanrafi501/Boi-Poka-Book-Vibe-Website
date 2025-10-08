@@ -7,6 +7,7 @@ import Book from "../Book/Book";
 
 const WishList = () => {
   const [wishList, setWishList] = useState([]);
+  const [sort, setSort] = useState('');
   const data = useLoaderData();
   console.log(data);
 
@@ -19,8 +20,33 @@ const WishList = () => {
     setWishList(filterdData);
   }, [data]);
 
+  const handleSort = type => {
+    setSort(type);
+
+    if(type === 'Year'){
+        const sortedByPage = [...wishList].sort((a, b) => a.yearOfPublishing - b.yearOfPublishing);
+        setWishList(sortedByPage);
+    }
+    if(type === 'Ratings'){
+        const sortedByPage = [...wishList].sort((a, b) => a.rating - b.rating);
+        setWishList(sortedByPage);
+    }
+  }
+  
   return (
     <div className="max-w-6xl m-auto my-9">
+      <details className="dropdown">
+        <summary className="btn m-1">Sort by: {sort?sort:''}</summary>
+        <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+          <li>
+            <a onClick={() => handleSort("Year")}>Year</a>
+          </li>
+          <li>
+            <a onClick={() => handleSort("Ratings")}>Ratings</a>
+          </li>
+        </ul>
+      </details>
+
       <Tabs>
         <TabList>
           <Tab>Read List</Tab>
