@@ -5,6 +5,7 @@ const Navbar = () => {
     const link = <>
         <NavLink to={'/'} className="m-5">Home</NavLink>
         <NavLink to={'about'} className="m-5">About</NavLink>
+        <NavLink to={'wishlist'} className="m-5">Wish List</NavLink>
     </>
   return (
     <div className="navbar bg-base-100 shadow-sm max-w-6xl m-auto">

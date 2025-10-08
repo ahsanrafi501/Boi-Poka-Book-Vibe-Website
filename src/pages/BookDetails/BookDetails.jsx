@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import { addToStoreDb } from "../../components/Utilities/Utilities";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -23,14 +24,18 @@ const BookDetails = () => {
     rating,
   } = singleBook;
 
-  console.log(tags)
+  // console.log(tags)
+
+  const handleWishList = id => {
+    addToStoreDb(id);
+  }
 
   return (
     <div className="max-w-6xl m-auto sm:flex justify-center items-between">
-      <div className="p-[74px] bg-[#1313130D] rounded-2xl my-8">
+      <div className="sm:p-[74px] ml-[11px] bg-[#1313130D] rounded-2xl my-8">
         <img className="max-h-[564px] max-w-[425px]" src={image} alt="book Cover Image" />
       </div>
-     <div className="ml-12">
+     <div className="sm:ml-12 ml-[11px]">
          <div className="border-b border-[#13131315] sm:mt-[100px]">
          <h2 className="text-[40px] font-bold">{bookName}</h2>
          <h4 className="text-[20px] font-medium text-[#13131380] mt-2">By: {author}</h4>
@@ -62,8 +67,8 @@ const BookDetails = () => {
         </div>
       </div>
       <div className="my-8">
-        <button className="btn px-6 mr-2">Read</button>
-        <button className="btn btn-accent ml-4">Wishlist</button>
+        <button className="btn px-6 mr-2">Mark As Read</button>
+        <button onClick={() => handleWishList(id)} className="btn btn-accent ml-4">Add to Wishlist</button>
       </div>
 
      </div>
